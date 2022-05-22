@@ -156,3 +156,15 @@ main {
 .task .actions .delete {
 	color: crimson;
 }
+
+.task .actions .done {
+	color: rgb(208, 173, 57);
+}
+
+.task .actions .done a:hover {
+	color: rgb(216, 181, 75);
+}
+
+.active {
+	text-decoration: line-through;
+}

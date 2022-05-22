@@ -37,35 +37,50 @@ window.addEventListener('load', () => {
             const task_actions_el = document.createElement('div');
             task_actions_el.classList.add('actions');
 
-            // Edit button
+            //Done action
+            const task_mark_el = document.createElement('button');
+            task_mark_el.classList.add('done');
+            task_mark_el.innerText = 'DONE';
+
+            // Edit action
             const task_edit_el = document.createElement('button');
             task_edit_el.classList.add('edit');
             task_edit_el.innerText = 'Edit';
 
-            //Delete button
+            //Delete action
             const task_delete_el = document.createElement('button');
             task_delete_el.classList.add('delete');
             task_delete_el.innerText = 'Delete';
 
+            // Append actions
+            task_actions_el.appendChild(task_mark_el);
             task_actions_el.appendChild(task_edit_el);
             task_actions_el.appendChild(task_delete_el);
+           
 
             task_el.appendChild(task_actions_el);
 
             list_el.appendChild(task_el);
 
-            // Delete task
+            // Done button
+            task_mark_el.addEventListener('click', (e) => {
+                if (input.text != '') {
+                    task_input_el.classList.toggle('active');
+                }
+            });
+
+            // Delete button
             task_delete_el.addEventListener('click', (e) => {
                 list_el.removeChild(task_el);
             });
 
-            // Edit task
+            // Edit button
 
             task_edit_el.addEventListener('click', (e) => {
                 if (task_edit_el.innerText.toLowerCase() == "edit") {
                     task_edit_el.innerText = "Save";
                     task_input_el.removeAttribute("readonly");
-                    //   task_input_el.focus();
+                    task_input_el.focus();
                 } else {
                     task_edit_el.innerText = "Edit";
                     task_input_el.setAttribute("readonly", "readonly");
